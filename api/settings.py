@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
-
+IPINFO_API_KEY = os.getenv('IPINFO_API_KEY')
 # Application definition
 
 INSTALLED_APPS = [

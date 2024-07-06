@@ -4,7 +4,8 @@ from django.conf import settings
 
 def get_location_and_weather(ip_address):
     try:
-        location_response = requests.get(f'http://ipinfo.io/{ip_address}/json')
+        ipinfo_api_key = settings.IPINFO_API_KEY
+        location_response = requests.get(f'http://ipinfo.io/{ip_address}/json?token={ipinfo_api_key}')
         location_response.raise_for_status()
         location_data = location_response.json()
         city = location_data.get('city', 'unknown')
