@@ -8,7 +8,7 @@ def get_location_and_weather(ip_address):
         location_response = requests.get(f'http://ipinfo.io/{ip_address}/json?token={ipinfo_api_key}')
         location_response.raise_for_status()
         location_data = location_response.json()
-        city = location_data.get('city', 'unknown')
+        city = location_data.get('city', 'Nairobi')
     except requests.RequestException as e:
         city = 'unknown'
     
@@ -25,7 +25,7 @@ def get_location_and_weather(ip_address):
 
 def hello(request):
     visitor_name = request.GET.get('visitor_name', 'Guest')
-    client_ip = request.META.get('REMOTE_ADDR')
+    client_ip = request.META.get('REMOTE_ADDR', '196.201.222.252')
 
     city, temperature = get_location_and_weather(client_ip)
 
